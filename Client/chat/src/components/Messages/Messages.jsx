@@ -1,20 +1,19 @@
 import React from "react";
 
-const Messages = ({ user }) => {
-  const isRight =
-    "bg-[#3B414A] w-2/4 p-3 text-white rounded-tr-2xl rounded-br-2xl rounded-tl-md rounded-bl-2xl";
-  return (
-    <div className={`flex  flex-col ${user ? "items-start" : "items-end"}`}>
-      <div>user</div>
-      <div
-        className={`${
-          user
-            ? isRight
-            : "bg-slate-50 w-2/4 p-3  rounded-tr-md rounded-br-2xl rounded-tl-2xl rounded-bl-2xl text-black text-base font-normal"
-        }`}
-      >
-        Messages
+const Messages = ({ user, message, className }) => {
+  if (user) {
+    return (
+      <div className={`flex  flex-col items-start mb-2 `}>
+        <div>{user}</div>
+        <div className={`${className}`}>{message}</div>
       </div>
+    );
+  }
+
+  return (
+    <div className={`flex  flex-col items-end  mb-2`}>
+      <div>You</div>
+      <div className={`${className}`}>{message}</div>
     </div>
   );
 };
